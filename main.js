@@ -38,7 +38,7 @@ MigrationService.prototype.checkPerson = function (person) {
     console.log('resolving ' + person.name);
     //const institutions = [this.policeResponse(), this.medicalResponse(), this.bankResponse()];
     const institutions = [this.policeResponse()];
-    return Promise.all(instututions);
+    return Promise.all(institutions);
 };
 
 MigrationService.prototype.policeResponse = function () {
