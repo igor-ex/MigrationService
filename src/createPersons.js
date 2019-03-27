@@ -46,6 +46,3 @@ FactoryOfPersons.prototype.createCrowdOfPersonsAndID = function (randomNumber) {
 FactoryOfPersons.prototype.createRandomNumberOfUser = function () {
     return this.createCrowdOfPersonsAndID(this.getRandomNumberOfUser());
 };
-
-const group = new FactoryOfPersons ();
-console.log(group.createRandomNumberOfUser());
