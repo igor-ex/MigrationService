@@ -31,4 +31,5 @@ _ReSharper*/
 #Nuget packages folder
 packages/
 .idea/
+.node_modules/
 css/*.css.map
