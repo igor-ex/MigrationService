@@ -113,3 +113,28 @@ MigrationService.prototype.bankResponse = function (person) {
     }, 'healty-gender', 40000);
 
 };
+
+/*
+const persons = [];
+const groupPromices = persons.map((person) => {
+    const policeCheck1 = new Promise(....);
+    const policeCheck2 = new Promise(....);
+    const policePromise = Promise.all([policeCheck1, policeCheck2]);
+
+    const medicCheck1 = new Promise(....);
+    const medicCheck2 = new Promise(....);
+    const medicPromise = Promise.all([medicCheck1, medicCheck2]);
+
+    const migrationServicePromise = Promise.all([policePromise, medicPromise]);
+    return migrationServicePromise;//должна всегда делать резолв а не реджект, иначе
+    //не будет в родителе результата всех персон, а будет только инфа о реджекте
+});
+
+const migrationServicePromiseForGroup = Promise.all(groupPromices);
+//или тут делать не промис олл, а на каждый навесить колбэк и проверять флагом что уже одному дали визу
+//и игнорировать остальных
+migrationServicePromiseForGroup
+    .then((responsesForEveryPersonOfTheGroup) => {
+        //перебрать ответы и если кому-то можно дать визу, то дать первому
+    })
+*/

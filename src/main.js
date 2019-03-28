@@ -9,7 +9,8 @@ function foo() {
     const group = [
         {name: 'Kostia', age: 21, gender: 'male', hasPassport: true},
         {name: 'Kostia', age: 21, gender: 'male', hasPassport: true},
-        {name: 'Oksana', age: 12, gender: 'female', hasPassport: true}
+        {name: 'Oksana', age: 12, gender: 'female', hasPassport: true},
+        {name: 'Alexey', age: 24, gender: 'male', hasPassport: true}
     ];
     console.log(group);
     const table = tableManager.init(group);

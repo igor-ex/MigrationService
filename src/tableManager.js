@@ -28,14 +28,14 @@ TableManager.prototype.renderRow = function (person) {
     let bankRow = document.getElementById('idDivBank');
 
     bankRow.innerHTML +='<div><span class="color yellow payment"></span></div>';
-//    row.innerText = person.name;
-//    this.table.appendChild(row);
+    row.innerText = person.name;
+    this.table.appendChild(row);
     return row;
 };
 
 TableManager.prototype.send = function (nameOfCheck, person, result) {//устанавливает ответ  миграцоонной службы для одного пункта
     const row = this.links.get(person);
-    row.innerText = row.innerText + '<br>' + (result ? 'true' : 'false');
+    row.innerHTML = row.innerHTML + '<div style="border: 1px solid gray; padding: 5px 10px; margin: 10px;">' + nameOfCheck + ' ' + (result ? 'true' : 'false') + '</div>';
 
 };
 
