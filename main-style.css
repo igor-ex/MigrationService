@@ -28,7 +28,9 @@ button{
     border-radius: 3px;
     margin-bottom: 5px;
 }
-
+.button-getvisa{
+    visibility: hidden;
+}
 .container {
     display: flex;
     text-align: center;
@@ -49,6 +51,9 @@ button{
     margin-top: 20px;
     text-align: center;
 }
+/*.message{*/
+    /*visibility: hidden;*/
+/*}*/
 .wrapper-output div{
     margin-top: 10px;
 }
@@ -84,8 +89,19 @@ button{
     width: 85px;
     height: 30px;
     display: inline-block;
-    background-color: green;
     margin: 0 auto;
-    color: white;
+    color: black;
+}
+.yellow{
+    background-color: yellow;
+}
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
 }
 
+/*.promise{*/
+    /*background-color: yellow;*/
+/*}*/

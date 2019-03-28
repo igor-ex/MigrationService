@@ -10,6 +10,7 @@ function getPerson() {
     };
     const quantityPersons = document.getElementById('idQuantityPersons');
     let errorMessage = document.getElementById('idMessage');
+    errorMessage.innerHTML = '';
     initArrPersons();
 
     let n = 0;
@@ -21,7 +22,15 @@ function getPerson() {
         }
     }
     if (n === 6) {
-        // arrPersons = createPersons();
+        // const factory = new FactoryOfPersons ();
+        // arrPersons = factory.createRandomNumberOfUser();
+        //
+        // for (prop in objInput){
+        //     let tmp='';
+        //     for(let i= 0; i< arrPersons.length; i++){
+        //         tmp =
+        //     }
+        // }
     } else {
         for (prop in objInput) {
             let arrTmp = checkedInput(objInput[prop].value, prop);
@@ -38,7 +47,8 @@ function getPerson() {
         }
     }
     if(flag){
-
+const getVisa = document.getElementById('idGetVisaForAll');
+getVisa.style = 'visibility: visible';
     }
     for (let i=0; i<arrPersons.length; i++) {
         for (prop in arrPersons[i]) {
@@ -62,8 +72,10 @@ function getPerson() {
     }
     function checkedInput(val, p) {
         arr = val.split(',');
+
         if (arr.length !== +quantityPersons.value) {
             errorMessage.innerHTML = 'Wrong field' + p;
+            flag = false;
             return [];
         }
         return arr;
