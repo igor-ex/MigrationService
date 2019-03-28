@@ -51,8 +51,7 @@ MigrationService.prototype.checkPerson = function (person) {
     this.names.add(person.name);
     person.resolve.push('name is not duplicate');
     console.log('is not duplicate ' + person.name);
-    //const institutions = [this.policeResponse(), this.medicalResponse(), this.bankResponse()];
-    const institutions = [this.policeResponse(person)];
+    const institutions = [this.policeResponse(person), this.medicalResponse(person), this.bankResponse(person)];
     return new Promise((resolve, reject) => {
         Promise.all(institutions)
             .then(() => resolve({person, result: true}))
@@ -80,16 +79,37 @@ MigrationService.prototype.getTaskPromise = function(person, conditionCallback, 
 MigrationService.prototype.policeResponse = function (person) {
     const age = this.getTaskPromise(person,(person) => {
         return person.age > 15;
-    }, 'police age check', 5000);
+    }, 'age', 5000);
 
     const ageGender = this.getTaskPromise(person,(person) => {
         return (person.gender === 'male' && person.age > 22) || (person.gender === 'female' && person.age > 18);
-    }, 'police age + gender check', 8000);
+    }, 'age-gender', 8000);
 
     const hasPassport = this.getTaskPromise(person,(person) => {
         return person.hasPassport;
-    }, 'police passport', 12000);
+    }, 'passport', 12000);
 
     const promiseArray = [age, ageGender, hasPassport];
     return Promise.all(promiseArray);
+};
+
+MigrationService.prototype.medicalResponse = function (person) {
+    const healthy  = this.getTaskPromise(person,(person) => {
+        return person.healthy > 75;
+    }, 'healty', 15000);
+
+    const healthyGender = this.getTaskPromise(person,(person) => {
+        return (person.gender === 'male' && person.healthy > 75) || (person.gender === 'female' && person.healthy > 85);
+    }, 'healty-gender', 15000);
+
+    const promiseArray = [healthy, healthyGender];
+    return Promise.all(promiseArray);
+};
+
+MigrationService.prototype.bankResponse = function (person) {
+
+    return this.getTaskPromise(person,(person) => {
+        return (person.gender === 'male' && person.payment >= 1000) || (person.gender === 'female' && person.payment > 950);
+    }, 'healty-gender', 40000);
+
 };
