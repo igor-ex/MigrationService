@@ -33,7 +33,7 @@ FactoryOfPersons.prototype.createCrowdOfPersonsAndID = function (randomNumber) {
     const crowdOfPersons = [];
     for (let i = 0; i < randomNumber; i++) {
         let today = new Date();
-        let milliseconds = today.getMilliseconds();
+        let milliseconds =today.getTime();
         this.serialNumber++;
         let id = this.serialNumber + "_" + milliseconds;
         let element = this.createPerson();
