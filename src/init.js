@@ -6,6 +6,9 @@ function configurate() {
 const buttonSave = document.getElementById('idSave');
 buttonSave.addEventListener("click", configurate);
 
+const buttonClear = document.getElementById('idClear');
+buttonClear.addEventListener("click", () => getPerson(true));
+
 const tableTemplate = document.getElementById('tableTemplate');
 const tablesContainer = document.getElementById('tablesContainer');
 const tab = new TableManager().init(tableTemplate, tablesContainer);

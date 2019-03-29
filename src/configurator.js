@@ -1,4 +1,4 @@
-function getPerson() {
+function getPerson(clear) {
     let arrPersons = [];
     const objInput = {
         name: document.getElementById('idName'),
@@ -9,6 +9,13 @@ function getPerson() {
         healthy: document.getElementById('idHealthy'),
     };
     const quantityPersons = document.getElementById('idQuantityPersons');
+    if (clear) {
+        Object.values(objInput).forEach((el) => {
+            el.value = '';
+        });
+        quantityPersons.value = '';
+        return;
+    }
     let errorMessage = document.getElementById('idMessage');
     errorMessage.innerHTML = '';
     initArrPersons();
@@ -26,11 +33,12 @@ function getPerson() {
         arrPersons = factory.createRandomNumberOfUser();
 
         for (prop in objInput){
-            let tmp='';
-            for(let i= 0; i< arrPersons.length; i++){
-                tmp +=','+ arrPersons[i][prop];
-            }
-            objInput[prop].value = tmp;
+            objInput[prop].value = arrPersons.map(person => person[prop]).join(',');
+            // let tmp='';
+            // for(let i= 0; i< arrPersons.length; i++){
+            //     tmp +=','+ arrPersons[i][prop];
+            // }
+            //objInput[prop].value = tmp;
         }
         quantityPersons.value = arrPersons.length;
     } else {
