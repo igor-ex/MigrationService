@@ -43,12 +43,12 @@ MigrationService.prototype.checkPerson = function (person) {
     person.reject = [];
     person.resolve = [];
     if (nameDuplication) {
-        this.rapport.send('migration name check', person, false);
+        this.rapport.send('nameCheck', person, false);
         console.log('rejecting ' + person.name + 'because of name duplication');
         person.reject.push('because of duplication');
         return Promise.resolve({result: false, person});
     }
-    this.rapport.send('migration name check', person, true);
+    this.rapport.send('nameCheck', person, true);
     this.names.add(person.name);
     person.resolve.push('name is not duplicate');
     console.log('is not duplicate ' + person.name);

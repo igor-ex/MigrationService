@@ -25,6 +25,7 @@ TableManager.prototype.createTableElements = function () {
     const els = {};
     els.table = document.importNode(this.tableTemplate.content.querySelector('.wrapper-output'), true);
     els.nameRow = els.table.getElementsByClassName('name')[0];
+    els.migrationServiceRow = els.table.getElementsByClassName('migrationService')[0]
     els.policeRow = els.table.getElementsByClassName('policeDepartament')[0];
     els.medicalRow = els.table.getElementsByClassName('medicalDepartament')[0];
     els.bankRow = els.table.getElementsByClassName('bankDepartament')[0];
@@ -34,6 +35,9 @@ TableManager.prototype.createTableElements = function () {
 TableManager.prototype.renderRow = function (person, els) {
     const nameRow = stringToFragment(`<div><span class="color">${person.name}</span></div>`).firstChild;
     els.nameRow.appendChild(nameRow);
+
+    const migrationServiceRow = stringToFragment(`<div><span class="color yellow nameCheck"></span></div>`).firstChild;
+    els.migrationServiceRow.appendChild(migrationServiceRow);
 
     const policeRow = stringToFragment('<div><span class="color yellow age"></span><span class="color yellow age-gender"></span>' +
         '<span class="color yellow passport"></span></div>').firstChild;
@@ -45,13 +49,16 @@ TableManager.prototype.renderRow = function (person, els) {
     const bankRow = stringToFragment('<div><span class="color yellow payment"></span></div>').firstChild;
     els.bankRow.appendChild(bankRow);
 
-    return {nameRow, policeRow, medicalRow, bankRow};
+    return {nameRow, migrationServiceRow, policeRow, medicalRow, bankRow};
 };
 
 TableManager.prototype.send = function (nameOfCheck, person, result) {//устанавливает ответ  миграцоонной службы для одного пункта
     const row = this.links.get(person);
     let element = null;
     switch(nameOfCheck) {
+        case 'nameCheck':
+            element = row.migrationServiceRow;
+            break;
         case 'age':
         case 'age-gender':
         case 'passport':
