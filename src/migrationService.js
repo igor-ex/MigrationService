@@ -14,20 +14,21 @@ MigrationService.prototype.getVisaToOneFromGroup = function(group) {
         promiseGroup.push(this.checkPerson(group[i]));
     }
     const promise = Promise.all(promiseGroup);
+    const self = this;
     promise
         .then((persons) => {
             for (let i = 0; i < persons.length; i++) {
                 if (persons[i].result === true) {
-                    this.rapport.send('group result', persons[i].person, true);
+                    self.rapport.send('group result', persons[i].person, true);
                     return;
                 }
             }
-            this.rapport.groupFails();
+            self.rapport.groupFails();
         })
         .catch(function () {
             console.log('im here');
             console.log('getVisaToOneFromGroup made reject');
-            this.rapport.groupFails();
+            self.rapport.groupFails();
         });
     return promise;
 };
@@ -86,7 +87,7 @@ MigrationService.prototype.policeResponse = function (person) {
     }, 'age-gender', 8000);
 
     const hasPassport = this.getTaskPromise(person,(person) => {
-        return person.hasPassport;
+        return person.isHasPassport;
     }, 'passport', 12000);
 
     const promiseArray = [age, ageGender, hasPassport];
@@ -96,11 +97,11 @@ MigrationService.prototype.policeResponse = function (person) {
 MigrationService.prototype.medicalResponse = function (person) {
     const healthy  = this.getTaskPromise(person,(person) => {
         return person.healthy > 75;
-    }, 'healty', 15000);
+    }, 'healthy', 15000);
 
     const healthyGender = this.getTaskPromise(person,(person) => {
         return (person.gender === 'male' && person.healthy > 75) || (person.gender === 'female' && person.healthy > 85);
-    }, 'healty-gender', 15000);
+    }, 'healthy-gender', 15000);
 
     const promiseArray = [healthy, healthyGender];
     return Promise.all(promiseArray);
@@ -110,7 +111,7 @@ MigrationService.prototype.bankResponse = function (person) {
 
     return this.getTaskPromise(person,(person) => {
         return (person.gender === 'male' && person.payment >= 1000) || (person.gender === 'female' && person.payment > 950);
-    }, 'healty-gender', 40000);
+    }, 'payment', 4000);
 
 };
 

@@ -1,46 +1,81 @@
 function TableManager() {
     this.group = null;
-    this.table = null;
     this.links = new WeakMap();
+    this.tableElements = [];
 }
 
-TableManager.prototype.init = function (group) {
+TableManager.prototype.init = function (group, table) {
     this.group = group;
-    this.table = document.createElement('div');
+    this.setTableElements();
     this.group.forEach((person) => {
         const row = this.renderRow(person);
         this.links.set(person, row);
     });
-    return this.table;
+};
+
+TableManager.prototype.setTableElements = function () {
+    const els = this.tableElements;
+    els.table = document.getElementById('idWrapperOutput');
+    els.nameRow = document.getElementById('idDivName');
+    els.policeRow = document.getElementById('idDivPolice');
+    els.medicalRow = document.getElementById('idDivMedical');
+    els.bankRow = document.getElementById('idDivBank');
 };
 
 TableManager.prototype.renderRow = function (person) {
-   const row = document.createElement('div');
-    let nameRow = document.getElementById('idDivName');
-    nameRow.innerHTML += ` <div><span class="color">${person.name}</span></div>`;
+    const nameRow = stringToFragment(`<div><span class="color">${person.name}</span></div>`).firstChild;
+    this.tableElements.nameRow.appendChild(nameRow);
 
-    let policeRow = document.getElementById('idDivPolice');
-    policeRow.innerHTML += '<div><span class="color yellow age"></span><span class="color yellow age-gender"></span>' +
-        '<span class="color yellow passport"></span></div>';
+    const policeRow = stringToFragment('<div><span class="color yellow age"></span><span class="color yellow age-gender"></span>' +
+        '<span class="color yellow passport"></span></div>').firstChild;
+    this.tableElements.policeRow.appendChild(policeRow);
 
-    let medicalRow = document.getElementById('idDivMedical');
-    medicalRow.innerHTML += ' <div><span class="color yellow  healty"></span><span class="color yellow healty-gender"></span></div>';
-    let bankRow = document.getElementById('idDivBank');
+    const medicalRow = stringToFragment('<div><span class="color yellow healthy"></span><span class="color yellow healthy-gender"></span></div>').firstChild;
+    this.tableElements.medicalRow.appendChild(medicalRow);
 
-    bankRow.innerHTML +='<div><span class="color yellow payment"></span></div>';
-    row.innerText = person.name;
-    this.table.appendChild(row);
-    return row;
+    const bankRow = stringToFragment('<div><span class="color yellow payment"></span></div>').firstChild;
+    this.tableElements.bankRow.appendChild(bankRow);
+
+    return {nameRow, policeRow, medicalRow, bankRow};
 };
 
 TableManager.prototype.send = function (nameOfCheck, person, result) {//устанавливает ответ  миграцоонной службы для одного пункта
     const row = this.links.get(person);
-    row.innerHTML = row.innerHTML + '<div style="border: 1px solid gray; padding: 5px 10px; margin: 10px;">' + nameOfCheck + ' ' + (result ? 'true' : 'false') + '</div>';
-
+    let element = null;
+    switch(nameOfCheck) {
+        case 'age':
+        case 'age-gender':
+        case 'passport':
+            element = row.policeRow;
+            break;
+        case 'healthy':
+        case 'healthy-gender':
+            element = row.medicalRow;
+            break;
+        case 'payment':
+            element = row.bankRow;
+            break;
+        default:
+            return;
+    }
+    element = element.getElementsByClassName(nameOfCheck);
+    if (!element) {
+        return;
+    } else {
+        element = element[0];
+    }
+    element.classList.remove('yellow');
+    element.classList.add(result ? 'green' : 'red');
 };
 
 TableManager.prototype.groupFails = function () {
     const row = document.createElement('div');
     row.innerText = 'no one from this group gets visa';
-    this.table.appendChild(row);
+    this.tableElements.table.parentNode.insertBefore(row, this.tableElements.table);
 };
+
+function stringToFragment(string) {
+    var renderer = document.createElement('template');
+    renderer.innerHTML = string;
+    return renderer.content;
+}

@@ -1,14 +1,17 @@
-buttonSave = document.getElementById('idSave');
+const buttonSave = document.getElementById('idSave');
 buttonSave.addEventListener("click", configurate);
 
 function configurate() {
-    let persons = getPerson();
+    const persons = getPerson();
 
-    buttonGetVisaForAll = document.getElementById('idGetVisaForAll');
+    const buttonGetVisaForAll = document.getElementById('idGetVisaForAll');
     buttonGetVisaForAll.addEventListener("click", sendRequest);
 
     function sendRequest() {
-        tab = new TableManager();
+        const tab = new TableManager();
         tab.init(persons);
+        const ms = new MigrationService();
+        ms.init(tab);
+        ms.getVisaToOneFromGroup(persons)
     }
 }

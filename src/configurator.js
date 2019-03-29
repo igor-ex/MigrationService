@@ -6,7 +6,7 @@ function getPerson() {
         gender: document.getElementById('idGender'),
         isHasPassport: document.getElementById('idIsHasPassport'),
         payment: document.getElementById('idPayment'),
-        healty: document.getElementById('idHealty'),
+        healthy: document.getElementById('idHealthy'),
     };
     const quantityPersons = document.getElementById('idQuantityPersons');
     let errorMessage = document.getElementById('idMessage');
@@ -17,20 +17,22 @@ function getPerson() {
     flag = true;
 
     for (prop in objInput) {
-        if (objInput[prop].value == null) {
+        if (objInput[prop].value === '') {
             n++;
         }
     }
     if (n === 6) {
-        // const factory = new FactoryOfPersons ();
-        // arrPersons = factory.createRandomNumberOfUser();
-        //
-        // for (prop in objInput){
-        //     let tmp='';
-        //     for(let i= 0; i< arrPersons.length; i++){
-        //         tmp =
-        //     }
-        // }
+        const factory = new FactoryOfPersons ();
+        arrPersons = factory.createRandomNumberOfUser();
+
+        for (prop in objInput){
+            let tmp='';
+            for(let i= 0; i< arrPersons.length; i++){
+                tmp +=','+ arrPersons[i][prop];
+            }
+            objInput[prop].value = tmp;
+        }
+        quantityPersons.value = arrPersons.length;
     } else {
         for (prop in objInput) {
             let arrTmp = checkedInput(objInput[prop].value, prop);
@@ -66,7 +68,7 @@ getVisa.style = 'visibility: visible';
                 gender: null,
                 isHasPassport: null,
                 payment: null,
-                healty: null,
+                healthy: null,
             }
         }
     }

@@ -8,7 +8,7 @@ body {
     font-family: 'Roboto Slab', serif;
     font-size: 18px;
     margin: 0;
-    padding: 0;
+    padding: 15px;
 }
 
 input {
@@ -81,7 +81,7 @@ button{
     display: inline-block;
     margin-left: 20px;
 }
-.color .healty{
+.color .healthy{
      display: inline-block;
     margin-right: 30px;
 }
