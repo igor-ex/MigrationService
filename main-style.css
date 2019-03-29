@@ -51,6 +51,10 @@ button{
     margin-top: 20px;
     text-align: center;
 }
+
+.wrapper-output_fail{
+    background: rgba(0, 0, 0, .2);
+}
 /*.message{*/
     /*visibility: hidden;*/
 /*}*/
@@ -63,10 +67,15 @@ button{
 .neck{
     font-weight: bold;
 }
+
 .wrapper-output .name .head {
     display: inline-block;
     margin-bottom: 35px;
 }
+.wrapper-output .name__person_visaSuccess {
+    color: green;
+}
+
 .wrapper-output .migrationService .head {
     display: inline-block;
     margin-bottom: 35px;

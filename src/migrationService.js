@@ -19,7 +19,7 @@ MigrationService.prototype.getVisaToOneFromGroup = function(group) {
         .then((persons) => {
             for (let i = 0; i < persons.length; i++) {
                 if (persons[i].result === true) {
-                    self.rapport.send('group result', persons[i].person, true);
+                    self.rapport.send('visaSuccess', persons[i].person, true);
                     return;
                 }
             }

@@ -6,10 +6,10 @@ const peopleFactory = new FactoryOfPersons ();
 
 function foo() {
     const group = [
-        {name: 'Kostia', age: 21, gender: 'male', hasPassport: true},
-        {name: 'Kostia', age: 21, gender: 'male', hasPassport: true},
-        {name: 'Oksana', age: 12, gender: 'female', hasPassport: true},
-        {name: 'Alexey', age: 24, gender: 'male', hasPassport: true}
+        {name: 'Kostia', age: 21, gender: 'male', isHasPassport: true, payment: 1000, healthy: 80},
+        {name: 'Kostia', age: 21, gender: 'male', isHasPassport: true, payment: 1000, healthy: 80},
+        {name: 'Oksana', age: 12, gender: 'female', isHasPassport: true, payment: 1000, healthy: 80},
+        {name: 'Alexey', age: 24, gender: 'male', isHasPassport: true, payment: 1000, healthy: 80}
     ];
     //const group = peopleFactory.createRandomNumberOfUser();
     console.log(group);
@@ -21,5 +21,5 @@ function foo() {
         .catch();
 
 }
-//foo();
+foo();
 

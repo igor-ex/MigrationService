@@ -33,7 +33,7 @@ TableManager.prototype.createTableElements = function () {
 };
 
 TableManager.prototype.renderRow = function (person, els) {
-    const nameRow = stringToFragment(`<div><span class="color">${person.name}</span></div>`).firstChild;
+    const nameRow = stringToFragment(`<div><span class="color personName">${person.name}</span></div>`).firstChild;
     els.nameRow.appendChild(nameRow);
 
     const migrationServiceRow = stringToFragment(`<div><span class="color yellow nameCheck"></span></div>`).firstChild;
@@ -56,6 +56,9 @@ TableManager.prototype.send = function (nameOfCheck, person, result) {//уста
     const row = this.links.get(person);
     let element = null;
     switch(nameOfCheck) {
+        case 'visaSuccess':
+            row.nameRow.getElementsByClassName('personName')[0].classList.add('name__person_visaSuccess');
+            return;
         case 'nameCheck':
             element = row.migrationServiceRow;
             break;
@@ -86,9 +89,10 @@ TableManager.prototype.send = function (nameOfCheck, person, result) {//уста
 
 TableManager.prototype.groupFails = function (group) {
     const els = this.groups.get(group);
-    const row = document.createElement('div');
-    row.innerText = 'no one from this group gets visa';
-    els.table.parentNode.insertBefore(row, els.table);
+    //const row = document.createElement('div');
+    //row.innerText = 'no one from this group gets visa';
+    //els.table.parentNode.insertBefore(row, els.table);
+    els.table.classList.add('wrapper-output_fail');
 };
 
 function stringToFragment(string) {
