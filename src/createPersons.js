@@ -4,7 +4,7 @@ function FactoryOfPersons () {
 FactoryOfPersons.prototype.serialNumber = 0;
 FactoryOfPersons.prototype.getRandomNumberOfUser = function() {
     var min = 2;
-    var max = 5;
+    var max = 6;
     return Math.floor(Math.random() * (+max - +min)) + +min;
 };
 
