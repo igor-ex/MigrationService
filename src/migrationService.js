@@ -28,7 +28,7 @@ MigrationService.prototype.getVisaToOneFromGroup = function(group) {
         .catch(function () {
             console.log('im here');
             console.log('getVisaToOneFromGroup made reject');
-            self.rapport.groupFails();
+            self.rapport.groupFails(group);
         });
     return promise;
 };

@@ -28,42 +28,61 @@
     </div>
 </div>
 
-<div id="idWrapperOutput" class="wrapper-output">
-    <div id="idDivName" class="name">
+<!--<div id="idWrapperOutput" class="wrapper-output">-->
+    <!--<div id="idDivName" class="name">-->
+        <!--<span class="head">Name</span>-->
+        <!--&lt;!&ndash;<div><span class="color br">Вася</span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color br">Дима</span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color br">Оксана</span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color br">Саша</span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color br">Коля</span></div>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div id="idDivPolice" class="policeDepartament">-->
+        <!--<span class="head">Police Departament</span>-->
+        <!--<div><span class="neck">Age</span><span class="neck">Gender-Age</span><span class="neck">Passport</span></div>-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div id="idDivMedical" class="medicalDepartament">-->
+        <!--<span class="head">Medical Departament</span>-->
+        <!--<div> <span class="neck">Healthy</span><span class="neck">Gender-Healthy</span></div>-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span><span class="color"></span></div>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div id="idDivBank" class="bankDepartament">-->
+        <!--<span class="head">Bank Departament</span>-->
+        <!--&lt;!&ndash;<div><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div><span class="color"></span></div>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+<template id="tableTemplate">
+<div class="wrapper-output">
+    <div class="name">
         <span class="head">Name</span>
-        <!--<div><span class="color br">Вася</span></div>-->
-        <!--<div><span class="color br">Дима</span></div>-->
-        <!--<div><span class="color br">Оксана</span></div>-->
-        <!--<div><span class="color br">Саша</span></div>-->
-        <!--<div><span class="color br">Коля</span></div>-->
     </div>
-    <div id="idDivPolice" class="policeDepartament">
+    <div class="policeDepartament">
         <span class="head">Police Departament</span>
         <div><span class="neck">Age</span><span class="neck">Gender-Age</span><span class="neck">Passport</span></div>
-        <!--<div><span class="color"></span><span class="color"></span><span class="color"></span></div>-->
-        <!--<div><span class="color"></span><span class="color"></span><span class="color"></span></div>-->
-        <!--<div><span class="color"></span><span class="color"></span><span class="color"></span></div>-->
-        <!--<div><span class="color"></span><span class="color"></span><span class="color"></span></div>-->
-        <!--<div><span class="color"></span><span class="color"></span><span class="color"></span></div>-->
     </div>
-    <div id="idDivMedical" class="medicalDepartament">
+    <div class="medicalDepartament">
         <span class="head">Medical Departament</span>
         <div> <span class="neck">Healthy</span><span class="neck">Gender-Healthy</span></div>
-        <!--<div><span class="color"></span><span class="color"></span></div>-->
-        <!--<div><span class="color"></span><span class="color"></span></div>-->
-        <!--<div><span class="color"></span><span class="color"></span></div>-->
-        <!--<div><span class="color"></span><span class="color"></span></div>-->
-        <!--<div><span class="color"></span><span class="color"></span></div>-->
     </div>
-    <div id="idDivBank" class="bankDepartament">
+    <div class="bankDepartament">
         <span class="head">Bank Departament</span>
-        <!--<div><span class="color"></span></div>-->
-        <!--<div><span class="color"></span></div>-->
-        <!--<div><span class="color"></span></div>-->
-        <!--<div><span class="color"></span></div>-->
-        <!--<div><span class="color"></span></div>-->
     </div>
 </div>
+</template>
+<div id="tablesContainer"></div>
 <div>
     <h2>ОСТАЛОСЬ ДОДЕЛАТЬ:</h2>
     <ul>
@@ -83,7 +102,7 @@
 </div>
 <script src ="src/faker.js"></script>
 <script src="src/createPersons.js"></script>
-<script src="src/tableManager.js"></script>
+<script src="src/tableManagerNew.js"></script>
 <script src="src/migrationService.js"></script>
 <script src="src/configurator.js"></script>
 <script src="src/main.js"></script>
