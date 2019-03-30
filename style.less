@@ -72,8 +72,13 @@ body {
     padding: 1px 0;
   }
 
+  &__label, &__row label {
+    flex: 1;
+    text-align: right;
+  }
+
   &__input {
-    margin-left: 20px;
+    margin-left: 15px;
 
     &_invalid {
       background: rgba(255, 0, 0, .3);
@@ -87,6 +92,10 @@ body {
 
     &__input {
       margin-left: 0;
+    }
+
+    &__label, &__row label {
+      text-align: left;
     }
   }
 
