@@ -68,10 +68,6 @@ body {
   line-height: 30px;
   padding: 1px 0;
 }
-.persons-config__row:last-of-type,
-.rules-config__row:last-of-type {
-  margin-bottom: 20px;
-}
 .persons-config__input,
 .rules-config__input {
   margin-left: 20px;
@@ -93,6 +89,12 @@ body {
 .persons-config__button,
 .rules-config__button {
   margin-right: 5px;
+}
+.wrapper__botton {
+  margin-top: 20px;
+}
+.rules-config__row:last-of-type {
+  margin-bottom: 20px;
 }
 .button-getvisa {
   visibility: hidden;
