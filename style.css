@@ -68,9 +68,16 @@ body {
   line-height: 30px;
   padding: 1px 0;
 }
+.persons-config__label,
+.rules-config__label,
+.persons-config__row label,
+.rules-config__row label {
+  flex: 1;
+  text-align: right;
+}
 .persons-config__input,
 .rules-config__input {
-  margin-left: 20px;
+  margin-left: 15px;
 }
 .persons-config__input_invalid,
 .rules-config__input_invalid {
@@ -84,6 +91,12 @@ body {
   .persons-config__input,
   .rules-config__input {
     margin-left: 0;
+  }
+  .persons-config__label,
+  .rules-config__label,
+  .persons-config__row label,
+  .rules-config__row label {
+    text-align: left;
   }
 }
 .persons-config__button,
