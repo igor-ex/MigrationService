@@ -12,24 +12,6 @@ body {
   font-size: 18px;
   margin: 0;
 }
-input {
-  font-family: 'Roboto Slab', serif;
-  font-size: 18px;
-  outline: none;
-  height: 30px;
-  border-radius: 3px;
-  margin-bottom: 5px;
-  margin-right: 10px;
-  padding: 3px;
-}
-button {
-  font-family: 'Roboto Slab', serif;
-  font-size: 18px;
-  outline: none;
-  height: 30px;
-  border-radius: 3px;
-  margin-bottom: 5px;
-}
 .page-title {
   margin: 0;
   padding: 10px 20px 12px;
@@ -58,6 +40,26 @@ button {
 .persons-config__header,
 .rules-config__title {
   margin-top: 0;
+}
+.persons-config__input,
+.rules-config__input {
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  outline: none;
+  height: 30px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  padding: 3px;
+}
+.persons-config__button,
+.rules-config__button {
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  outline: none;
+  height: 30px;
+  border-radius: 3px;
+  margin-bottom: 5px;
 }
 .persons-config__row,
 .rules-config__row {
