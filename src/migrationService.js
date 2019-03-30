@@ -2,10 +2,12 @@
 function MigrationService() {//раппорт - объект который будет отрисовывать результат
     this.rapport = null;
     this.names = new Set;
+    this.rules = null;
 }
 
-MigrationService.prototype.init = function(rapport) {
+MigrationService.prototype.init = function(rapport, rulesObject) {
     this.rapport = rapport;
+    this.rules = rulesObject;
 };
 
 MigrationService.prototype.getVisaToOneFromGroup = function(group) {
@@ -79,11 +81,11 @@ MigrationService.prototype.getTaskPromise = function(person, conditionCallback, 
 
 MigrationService.prototype.policeResponse = function (person) {
     const age = this.getTaskPromise(person,(person) => {
-        return person.age > 15;
+        return person.age > this.rules.rules.age;
     }, 'age', 5000);
 
     const ageGender = this.getTaskPromise(person,(person) => {
-        return (person.gender === 'male' && person.age > 22) || (person.gender === 'female' && person.age > 18);
+        return (person.gender === 'male' && person.age > this.rules.rules.maleAge) || (person.gender === 'female' && person.age > this.rules.rules.femaleAge);
     }, 'age-gender', 8000);
 
     const hasPassport = this.getTaskPromise(person,(person) => {
@@ -96,11 +98,11 @@ MigrationService.prototype.policeResponse = function (person) {
 
 MigrationService.prototype.medicalResponse = function (person) {
     const healthy  = this.getTaskPromise(person,(person) => {
-        return person.healthy > 75;
+        return person.healthy > this.rules.rules.healthy;
     }, 'healthy', 15000);
 
     const healthyGender = this.getTaskPromise(person,(person) => {
-        return (person.gender === 'male' && person.healthy > 75) || (person.gender === 'female' && person.healthy > 85);
+        return (person.gender === 'male' && person.healthy > this.rules.rules.maleHealthy) || (person.gender === 'female' && person.healthy > this.rules.rules.femaleHealthy);
     }, 'healthy-gender', 15000);
 
     const promiseArray = [healthy, healthyGender];
@@ -110,7 +112,7 @@ MigrationService.prototype.medicalResponse = function (person) {
 MigrationService.prototype.bankResponse = function (person) {
 
     return this.getTaskPromise(person,(person) => {
-        return (person.gender === 'male' && person.payment >= 1000) || (person.gender === 'female' && person.payment > 950);
+        return (person.gender === 'male' && person.payment >= this.rules.rules.malePayment) || (person.gender === 'female' && person.payment > this.rules.rules.femalePayment);
     }, 'payment', 4000);
 
 };
