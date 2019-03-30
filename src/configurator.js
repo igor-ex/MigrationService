@@ -9,6 +9,8 @@ function getPerson(clear) {
         healthy: document.getElementById('idHealthy'),
     };
     const quantityPersons = document.getElementById('idQuantityPersons');
+    const getVisa = document.getElementById('idGetVisaForAll');
+    getVisa.style.visibility = 'hidden';
     if (clear) {
         Object.values(objInput).forEach((el) => {
             el.value = '';
@@ -21,9 +23,9 @@ function getPerson(clear) {
     initArrPersons();
 
     let n = 0;
-    flag = true;
+    let flag = true;
 
-    for (prop in objInput) {
+    for (let prop in objInput) {
         if (objInput[prop].value === '') {
             n++;
         }
@@ -32,17 +34,12 @@ function getPerson(clear) {
         const factory = new FactoryOfPersons ();
         arrPersons = factory.createRandomNumberOfUser();
 
-        for (prop in objInput){
+        for (let prop in objInput){
             objInput[prop].value = arrPersons.map(person => person[prop]).join(',');
-            // let tmp='';
-            // for(let i= 0; i< arrPersons.length; i++){
-            //     tmp +=','+ arrPersons[i][prop];
-            // }
-            //objInput[prop].value = tmp;
-        }
+                }
         quantityPersons.value = arrPersons.length;
     } else {
-        for (prop in objInput) {
+        for (let prop in objInput) {
             let arrTmp = checkedInput(objInput[prop].value, prop);
             if (!arrTmp.length) {
                 flag = false;
@@ -57,11 +54,10 @@ function getPerson(clear) {
         }
     }
     if(flag){
-const getVisa = document.getElementById('idGetVisaForAll');
-getVisa.style = 'visibility: visible';
+getVisa.style.visibility = 'visible';
     }
     for (let i=0; i<arrPersons.length; i++) {
-        for (prop in arrPersons[i]) {
+        for (let prop in arrPersons[i]) {
             console.log(arrPersons[i][prop]);
         }
     }
@@ -81,10 +77,10 @@ getVisa.style = 'visibility: visible';
         }
     }
     function checkedInput(val, p) {
-        arr = val.split(',');
+        let arr = val.split(',');
 
         if (arr.length !== +quantityPersons.value) {
-            errorMessage.innerHTML = 'Wrong field' + p;
+            errorMessage.innerHTML = 'Wrong field  ' + p;
             flag = false;
             return [];
         }
@@ -93,8 +89,5 @@ getVisa.style = 'visibility: visible';
 }
 
 
-// let today = new Date();
-// let milliseconds = today.getMilliseconds();
 
-// id: unique key for id of new Person: serial number + time stamp, devided “_”,
 
