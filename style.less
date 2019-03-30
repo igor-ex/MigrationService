@@ -1,28 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&subset=cyrillic');
 
+@font-size: 18px;
+@page-padding: 20px;
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Roboto Slab', serif;
-  font-size: 18px;
+  font-size: @font-size;
   margin: 0;
-  padding: 15px;
 }
 
 input {
   font-family: 'Roboto Slab', serif;
-  font-size: 18px;
+  font-size: @font-size;
   outline: none;
   height: 30px;
   border-radius: 3px;
   margin-bottom: 5px;
   margin-right: 10px;
+  padding: 3px;
 }
 button{
   font-family: 'Roboto Slab', serif;
-  font-size: 18px;
+  font-size: @font-size;
   outline: none;
   height: 30px;
   border-radius: 3px;
@@ -30,24 +33,65 @@ button{
 }
 
 .page-title {
-  margin-top: 0;
+  margin: 0;
+  padding:  10px @page-padding 12px;
+  background: #de0000e6;
+  position: relative;
+  color: #fff;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 100%;
+    height: 20px;
+    background: url(bg.svg);
+    background-position-x: -5px;
+  }
+}
+
+.wrapper {
+  padding: @page-padding;
 }
 
 .wrapper-input {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .persons-config__header, .rules-config__title {
   margin-top: 0;
 }
-.rules-config {
+
+.persons-config, .rules-config {
   &__row {
     display: flex;
     justify-content: space-between;
+    line-height: 30px;
+    padding: 1px 0;
+  }
+
+  &__row:last-of-type {
+    margin-bottom: 20px;
   }
 
   &__input {
-    margin-left: 10px;
+    margin-left: 20px;
+
+    &_invalid {
+      background: rgba(255, 0, 0, .3);
+    }
+  }
+
+  @media (max-width: 990px) {
+    &__row {
+      flex-direction: column;
+    }
+
+    &__input {
+      margin-left: 0;
+    }
   }
 
   &__button {
@@ -55,9 +99,7 @@ button{
   }
 }
 
-.persons-config__input {
-  display: block;
-}
+
 
 .button-getvisa{
   visibility: hidden;
@@ -68,7 +110,7 @@ button{
   flex-direction: row;
   justify-content: space-around;
   margin-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   text-align: center;
 }
 
@@ -79,7 +121,7 @@ button{
 /*visibility: hidden;*/
 /*}*/
 .wrapper-output div{
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .head{
   font-weight: bolder;

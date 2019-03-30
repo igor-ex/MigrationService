@@ -9,11 +9,25 @@ function Rules(){
         malePayment: 1000,
         femalePayment: 950
     };
+    this.labels = {
+        age: 'Age',
+        maleAge: 'Male age',
+        femaleAge: 'Female age',
+        healthy: 'Health',
+        maleHealthy: 'Male health',
+        femaleHealthy: 'Female health',
+        malePayment: 'Male payment',
+        femalePayment: 'Female payment'
+    };
     this.rules = [];
     this.elements = [];
+    this.prefix = null;
+    this.classPrefix = null;
 }
 
 Rules.prototype.init = function  (container, prefix, classPrefix) {
+    this.prefix = prefix;
+    this.classPrefix = classPrefix;
     //создает форму и устанавливает в нее дефолтные значения
     const fragment = document.createDocumentFragment();
 
@@ -32,7 +46,7 @@ Rules.prototype.init = function  (container, prefix, classPrefix) {
         const label = document.createElement('label');
         label.setAttribute('for', id);
         label.classList.add(classPrefix + 'label');
-        label.innerText = key;
+        label.innerText = this.labels[key];
         row.appendChild(label);
 
         const el = document.createElement('input');
@@ -40,13 +54,13 @@ Rules.prototype.init = function  (container, prefix, classPrefix) {
         this.elements[key] = el;
         el.setAttribute('type', 'text');
         el.id = id;
-        el.value = this.defaultRules[key];
+        //el.value = this.defaultRules[key];
         el.addEventListener('input', () => {
             if (el.value === '') {
-                el.style.background = '#f00';
+                this.showInvalid(el);
                 saveBtn.setAttribute('disabled', 'disabled');
             } else {
-                el.style.background = '';
+                this.showValid(el);
                 if (Object.values(this.elements).some(el => el.value === '')) {
                     saveBtn.setAttribute('disabled', 'disabled');
                     return;
@@ -77,7 +91,7 @@ Rules.prototype.init = function  (container, prefix, classPrefix) {
             //проверка на незаполненность полей
             if (el.value === '') {
                 flag = true;
-                el.style.background = '#f00';
+                this.showInvalid(el);
             }
         });
         if (flag) {
@@ -94,7 +108,7 @@ Rules.prototype.init = function  (container, prefix, classPrefix) {
     loadDefaultsBtn.addEventListener('click', () => {
         this.loadDefaults();
         saveBtn.removeAttribute('disabled');
-        Object.values(this.elements).forEach(el => el.style.background = '');
+        Object.values(this.elements).forEach(el => this.showValid(el));
     });
     fragment.appendChild(loadDefaultsBtn);
 
@@ -134,4 +148,12 @@ Rules.prototype.cloneRules = function (){
         rules[key] = this.defaultRules[key];
     });
     this.rules = rules;
+};
+
+Rules.prototype.showValid = function (el){
+    el.classList.remove(this.classPrefix + 'input_invalid');
+};
+
+Rules.prototype.showInvalid = function (el){
+    el.classList.add(this.classPrefix + 'input_invalid');
 };
