@@ -34,6 +34,7 @@ TableManager.prototype.createTableElements = function () {
 
 TableManager.prototype.renderRow = function (person, els) {
     const nameRow = stringToFragment(`<div><span class="color personName">${person.name}</span></div>`).firstChild;
+    nameRow.setAttribute('title', JSON.stringify(person));
     els.nameRow.appendChild(nameRow);
 
     const migrationServiceRow = stringToFragment(`<div><span class="color yellow nameCheck"></span></div>`).firstChild;

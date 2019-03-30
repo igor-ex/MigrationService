@@ -22,5 +22,5 @@ function foo() {
         .catch();
 
 }
-foo();
+//foo();
 

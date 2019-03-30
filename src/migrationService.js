@@ -115,7 +115,7 @@ MigrationService.prototype.bankResponse = function (person) {
 
     return this.getTaskPromise(person,(person) => {
         return (person.gender === 'male' && person.payment >= this.rules.rules.malePayment) || (person.gender === 'female' && person.payment > this.rules.rules.femalePayment);
-    }, 'payment', 4000);
+    }, 'payment', 40000);
 
 };
 

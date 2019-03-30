@@ -11,7 +11,7 @@ buttonClear.addEventListener("click", () => getPerson(true));
 
 const rulesConfig = document.getElementById('rulesConfig');
 const rules = new Rules();
-rules.init(rulesConfig, 'rules_');
+rules.init(rulesConfig, 'rules_', 'rules-config__');
 
 const tableTemplate = document.getElementById('tableTemplate');
 const tablesContainer = document.getElementById('tablesContainer');

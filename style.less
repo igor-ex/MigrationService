@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&subset=cyrillic');
+
+@font-size: 18px;
+@page-padding: 20px;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
+  font-size: @font-size;
+  margin: 0;
+}
+
+.page-title {
+  margin: 0;
+  padding:  10px @page-padding 12px;
+  background: #de0000e6;
+  position: relative;
+  color: #fff;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 100%;
+    height: 20px;
+    background: url(bg.svg);
+    background-position-x: -5px;
+  }
+}
+
+.wrapper {
+  padding: @page-padding;
+}
+
+.wrapper-input {
+  display: flex;
+  justify-content: space-around;
+}
+.persons-config__header, .rules-config__title {
+  margin-top: 0;
+}
+
+.persons-config, .rules-config {
+
+  &__input {
+    font-family: 'Roboto Slab', serif;
+    font-size: @font-size;
+    outline: none;
+    height: 30px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    padding: 3px;
+  }
+  &__button{
+    font-family: 'Roboto Slab', serif;
+    font-size: @font-size;
+    outline: none;
+    height: 30px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    line-height: 30px;
+    padding: 1px 0;
+  }
+
+  &__input {
+    margin-left: 20px;
+
+    &_invalid {
+      background: rgba(255, 0, 0, .3);
+    }
+  }
+
+  @media (max-width: 990px) {
+    &__row {
+      flex-direction: column;
+    }
+
+    &__input {
+      margin-left: 0;
+    }
+  }
+
+  &__button {
+    margin-right: 5px;
+  }
+}
+
+.wrapper__botton {
+  margin-top: 20px;
+}
+
+.rules-config__row:last-of-type {
+  margin-bottom: 20px;
+}
+
+.button-getvisa{
+  visibility: hidden;
+}
+
+.wrapper-output{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.wrapper-output_fail{
+  background: rgba(0, 0, 0, .1);
+}
+/*.message{*/
+/*visibility: hidden;*/
+/*}*/
+.wrapper-output div{
+  margin-top: 15px;
+}
+.head{
+  font-weight: bolder;
+}
+.neck{
+  font-weight: bold;
+}
+
+.wrapper-output .name .head {
+  display: inline-block;
+  margin-bottom: 35px;
+}
+.wrapper-output .name__person_visaSuccess {
+  color: #fff;
+  background: green;
+}
+
+.wrapper-output .migrationService .head {
+  display: inline-block;
+  margin-bottom: 35px;
+}
+.wrapper-output .bankDepartament .head {
+  display: inline-block;
+  margin-bottom: 35px;
+}
+
+.policeDepartament span:nth-child(2){
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.medicalDepartament span:nth-child(2){
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.color .healthy {
+  display: inline-block;
+  margin-right: 30px;
+}
+.color{
+  width: 85px;
+  height: 30px;
+  display: inline-block;
+  margin: 0 auto;
+  color: #fff;
+  vertical-align: middle;
+  line-height: 30px;
+}
+.personName {
+  color: #000;
+}
+.yellow{
+  background-color: yellow;
+  color: #000;
+}
+.red{
+  background-color: red;
+}
+.green{
+  background-color: green;
+}
+
+/*.promise{*/
+/*background-color: yellow;*/
+/*}*/
