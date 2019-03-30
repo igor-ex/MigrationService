@@ -1,0 +1,137 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(https://fonts.gstatic.com/s/robotoslab/v8/BngMUXZYTXPIvIBgJJSb6ufJ5qA.ttf) format('truetype');
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 15px;
+}
+input {
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  outline: none;
+  height: 30px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+button {
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  outline: none;
+  height: 30px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.page-title {
+  margin-top: 0;
+}
+.wrapper-input {
+  display: flex;
+  justify-content: space-between;
+}
+.persons-config__header,
+.rules-config__title {
+  margin-top: 0;
+}
+.rules-config__row {
+  display: flex;
+  justify-content: space-between;
+}
+.rules-config__input {
+  margin-left: 10px;
+}
+.rules-config__button {
+  margin-right: 5px;
+}
+.persons-config__input {
+  display: block;
+}
+.button-getvisa {
+  visibility: hidden;
+}
+.wrapper-output {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.wrapper-output_fail {
+  background: rgba(0, 0, 0, 0.1);
+}
+/*.message{*/
+/*visibility: hidden;*/
+/*}*/
+.wrapper-output div {
+  margin-top: 10px;
+}
+.head {
+  font-weight: bolder;
+}
+.neck {
+  font-weight: bold;
+}
+.wrapper-output .name .head {
+  display: inline-block;
+  margin-bottom: 35px;
+}
+.wrapper-output .name__person_visaSuccess {
+  color: #fff;
+  background: green;
+}
+.wrapper-output .migrationService .head {
+  display: inline-block;
+  margin-bottom: 35px;
+}
+.wrapper-output .bankDepartament .head {
+  display: inline-block;
+  margin-bottom: 35px;
+}
+.policeDepartament span:nth-child(2) {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.medicalDepartament span:nth-child(2) {
+  display: inline-block;
+  margin-left: 20px;
+}
+.color .healthy {
+  display: inline-block;
+  margin-right: 30px;
+}
+.color {
+  width: 85px;
+  height: 30px;
+  display: inline-block;
+  margin: 0 auto;
+  color: #fff;
+  vertical-align: middle;
+  line-height: 30px;
+}
+.personName {
+  color: #000;
+}
+.yellow {
+  background-color: yellow;
+  color: #000;
+}
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
+/*.promise{*/
+/*background-color: yellow;*/
+/*}*/
+/*# sourceMappingURL=style.css.map */
