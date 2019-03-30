@@ -67,7 +67,9 @@ MigrationService.prototype.getTaskPromise = function(person, conditionCallback, 
     //conditionCallback - функция, которая принимает объект персоны и возвращает true
     //если проверка пройдена успешно
     return new Promise((resolve, reject) => {
+        const intervalID = setInterval(() => this.rapport.send(nameOfCheck, person, null), 1000)
         setTimeout(() => {
+            clearInterval(intervalID);
             if (conditionCallback(person)) {
                 this.rapport.send(nameOfCheck, person, true);
                 resolve()

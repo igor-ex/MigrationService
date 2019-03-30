@@ -42,7 +42,7 @@ Rules.prototype.init = function  (container, prefix) {
                 saveBtn.removeAttribute('disabled');
             }
         });
-        
+
         fragment.appendChild(el);
     });
     this.cloneRules();

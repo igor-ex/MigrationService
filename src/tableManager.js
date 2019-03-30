@@ -83,8 +83,12 @@ TableManager.prototype.send = function (nameOfCheck, person, result) {//уста
     } else {
         element = element[0];
     }
-    element.classList.remove('yellow');
-    element.classList.add(result ? 'green' : 'red');
+    if (result === null) {
+        element.innerText = element.innerText ? ++element.innerText : 1;
+    } else {
+        element.classList.remove('yellow');
+        element.classList.add(result ? 'green' : 'red');
+    }
 };
 
 TableManager.prototype.groupFails = function (group) {
